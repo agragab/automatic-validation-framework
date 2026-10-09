@@ -1,6 +1,8 @@
+import sys
+
 def generate_report(total_tests: int, failed: int, present_fields: dict, single_ids: dict, temperature: dict, exposure: dict, focus: dict):
 
-    print(f"Report: \n {50*"-"}")   
+    print(f"Report on {sys.argv[1]}: \n {50*"-"}")   
     print(f"Total tests: {total_tests}")
     print(f"Passed tests: {total_tests-failed}")
     print(f"Failed tests: {failed}")

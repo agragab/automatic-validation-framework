@@ -1,9 +1,10 @@
 import json
+import sys
 
 def read_json():
     
     try:
-        with open ("test.json", "r") as file:
+        with open (sys.argv[1], "r") as file:
             json_reader = json.load(file)
             return json_reader
     except FileNotFoundError as e:

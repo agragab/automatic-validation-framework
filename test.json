@@ -1,0 +1,157 @@
+[
+    {
+        "m_id": "101",
+        "timestamp": "2026-10-09T08:00:00",
+        "temperature": "20",
+        "exposure": "2",
+        "focus_error": "0"
+    },
+    {
+        "m_id": "102",
+        "timestamp": "2026-10-09T08:05:00",
+        "temperature": "19",
+        "exposure": "1",
+        "focus_error": "53"
+    },
+    {
+        "m_id": "103",
+        "timestamp": "2026-10-09T08:10:00",
+        "temperature": "60",
+        "exposure": "5",
+        "focus_error": "52"
+    },
+    {
+        "m_id": "104",
+        "timestamp": "2026-10-09T08:15:00",
+        "temperature": "61",
+        "exposure": "6",
+        "focus_error": "54"
+    },
+    {
+        "m_id": "105",
+        "timestamp": "2026-10-09T08:20:00",
+        "temperature": "35",
+        "exposure": "3",
+        "focus_error": "25"
+    },
+    {
+        "m_id": "106",
+        "timestamp": "2026-10-09T08:25:00",
+        "temperature": "15",
+        "exposure": "4",
+        "focus_error": "10"
+    },
+    {
+        "m_id": "107",
+        "timestamp": "2026-10-09T08:30:00",
+        "temperature": "45",
+        "exposure": "0",
+        "focus_error": "70"
+    },
+    {
+        "m_id": "108",
+        "timestamp": "2026-10-09T08:35:00",
+        "temperature": "55",
+        "exposure": "7",
+        "focus_error": "51"
+    },
+    {
+        "m_id": "109",
+        "timestamp": "2026-10-09T08:40:00",
+        "temperature": "",
+        "exposure": "3",
+        "focus_error": "15"
+    },
+    {
+        "m_id": "110",
+        "timestamp": "",
+        "temperature": "30",
+        "exposure": "",
+        "focus_error": "20"
+    },
+    {
+        "m_id": "111",
+        "timestamp": "Thursday, 12th of 29:22",
+        "temperature": "65",
+        "exposure": "1",
+        "focus_error": "90"
+    },
+    {
+        "m_id": "112",
+        "timestamp": "2026-10-09T09:00:00",
+        "temperature": "25",
+        "exposure": "5",
+        "focus_error": "52"
+    },
+    {
+        "m_id": "113",
+        "timestamp": "2026-10-09T09:05:00",
+        "temperature": "20",
+        "exposure": "6",
+        "focus_error": "53"
+    },
+    {
+        "m_id": "114",
+        "timestamp": "2026-10-09T09:10:00",
+        "temperature": "60",
+        "exposure": "2",
+        "focus_error": "1"
+    },
+    {
+        "m_id": "115",
+        "timestamp": "2026-10-09T09:15:00",
+        "temperature": "40",
+        "exposure": "4",
+        "focus_error": ""
+    },
+    {
+        "m_id": "116",
+        "timestamp": "2026-10-09T09:20:00",
+        "temperature": "18",
+        "exposure": "0",
+        "focus_error": "100"
+    },
+    {
+        "m_id": "117",
+        "timestamp": "2026-10-09T09:25:00",
+        "temperature": "50",
+        "exposure": "3",
+        "focus_error": "30"
+    },
+    {
+        "m_id": "118",
+        "timestamp": "2026-10-09T09:30:00",
+        "temperature": "62",
+        "exposure": "8",
+        "focus_error": "55"
+    },
+    {
+        "m_id": "119",
+        "timestamp": "2026-10-09T09:35:00",
+        "temperature": "22",
+        "exposure": "2",
+        "focus_error": "52"
+    },
+    {
+        "m_id": "120",
+        "timestamp": "2026-10-09T09:40:00",
+        "temperature": "58",
+        "exposure": "5",
+        "focus_error": "49"
+    },
+    {
+        "m_id": "121",
+        "timestamp": "2026-10-09T09:45:00",
+        "temperature": "35",
+        "exposure": "3",
+        "focus_error": "10"
+    },
+    {
+        "m_id": "121",
+        "timestamp": "2026-10-09T09:50:00",
+        "temperature": "42",
+        "exposure": "4",
+        "focus_error": "15"
+    }
+]
+

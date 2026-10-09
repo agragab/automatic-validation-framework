@@ -16,5 +16,6 @@ A Python-based validation framework for ingesting and validating sensor readings
 
 The project demonstrates practical data validation, input handling, and automated quality checks for sensor data, with an emphasis on producing clear and actionable validation results.
 
+## Technologies
+**Python, PyTest, Bash, GitHub Actions, Docker**
 
-[![Architecture diagram of agragab/automatic-validation-framework](https://gitdiagram.com/agragab/automatic-validation-framework/diagram.png)](https://gitdiagram.com/agragab/automatic-validation-framework?utm_source=readme&utm_medium=picture)

@@ -1,0 +1,45 @@
+Report on JSON: 
+--------------------------------------------------
+Total tests: 198
+Passed tests: 172
+Failed tests: 26
+--------------------------------------------------
+    Missing Fields:
+    Test:9    Missing Field: temperature
+    Test:10    Missing Field: timestamp
+    Test:10    Missing Field: exposure
+    Test:15    Missing Field: focus_error
+
+
+    Duplicated ID's:
+    Duplicated ID: 121    Second Occurence: 22
+
+
+    Focus Error:
+    Test: 102    Reading: 53
+    Test: 104    Reading: 54
+    Test: 107    Reading: 70
+    Test: 111    Reading: 90
+    Test: 113    Reading: 53
+    Test: 116    Reading: 100
+    Test: 118    Reading: 55
+
+
+    Exposure Error:
+    Test: 102    Reading: 1
+    Test: 104    Reading: 6
+    Test: 107    Reading: 0
+    Test: 108    Reading: 7
+    Test: 111    Reading: 1
+    Test: 113    Reading: 6
+    Test: 116    Reading: 0
+    Test: 118    Reading: 8
+
+
+    Temperature Error:
+    Test: 102    Reading: 19
+    Test: 104    Reading: 61
+    Test: 106    Reading: 15
+    Test: 111    Reading: 65
+    Test: 116    Reading: 18
+    Test: 118    Reading: 62

@@ -53,7 +53,7 @@ def generate_report(total_tests: int, failed: int, present_fields: dict, single_
 
 
 
-def generate_report_string(total_tests: int, failed: int, present_fields: dict, single_ids: dict, temperature: dict, exposure: dict, focus: dict):
+def generate_report_string(total_tests: int, failed: int, failed_types: list[dict], present_fields: dict, single_ids: dict, temperature: dict, exposure: dict, focus: dict):
 
     report = []
 
@@ -62,6 +62,15 @@ def generate_report_string(total_tests: int, failed: int, present_fields: dict, 
     report.append(f"Passed tests: {total_tests-failed}")
     report.append(f"Failed tests: {failed}")
     report.append(f"{50*'-'}")
+    report.append(f"    Incorrect Type:")
+
+    for i in failed_types:
+        report.append(f"    Sequence: {i.get("sequence")}")
+        report.append(f"    Test: {i.get("test")}")
+        report.append(f"    Exception Type: {i.get("exception")}")
+        report.append("\n")
+
+
     report.append("    Missing Fields:")
 
     zipped_missing_fields = zip(present_fields["sensor_reading"], present_fields["empty_fields"])

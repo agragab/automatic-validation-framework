@@ -155,3 +155,43 @@ def test_validate_focus_outside_bounds():
         "in_bounds": [],
         "reading": ["60","100"]
     }
+
+def test_temp_wrong_type():
+
+    Readings = [{
+        "m_id": "101",
+        "timestamp": "2026-10-09T08:00:00",
+        "temperature": "abc",
+        "exposure": "2",
+        "focus_error": "0"
+    },
+    {
+        "m_id": "102",
+        "timestamp": "2026-10-09T08:00:00",
+        "temperature": "20.5",
+        "exposure": "2",
+        "focus_error": "0"
+    },
+    {
+        "m_id": "103",
+        "timestamp": "2026-10-09T08:00:00",
+        "temperature": "",
+        "exposure": "2",
+        "focus_error": "0"
+    },
+    {
+        "m_id": "104",
+        "timestamp": "2026-10-09T08:00:00",
+        "temperature": None,
+        "exposure": "2",
+        "focus_error": "0"
+    }
+    ]
+
+    assert validate.validate_temperature(Readings) == {
+        "test": "Temperature",
+        "result": False,
+        "out_of_bounds": [],
+        "in_bounds": [],
+        "reading": ["101","102"]
+    }

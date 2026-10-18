@@ -1,7 +1,4 @@
-
-
-# validate all fields are present, works with strings but crashes with empty ints and such
-# design change: all fields are originally strings
+#check this
 def validate_present_fields(Readings: list[dict]) -> dict:
     dict_of_empty_vales = {"test":"present fields","test_result": False, "sensor_reading": [], "empty_fields": []}
     counter = 1
@@ -16,16 +13,8 @@ def validate_present_fields(Readings: list[dict]) -> dict:
     return dict_of_empty_vales
 
 
-# # validates that field is an integer (used only for the id)
-# # Design change: All fields are strings at first        
-# def validate_structure_id(Readings: list[dict] = json, pattern: str = "[0-9]+"):
-#     for dictionary in Readings:
-#         if (re.search(pattern, str(dictionary["m_id"]))):
-#             print("nice")
-#         else:
-#             print("not nice")
 
-
+# bug here i guess
 def validate_single_ids(Readings: list[dict]):
 
     seen = set()

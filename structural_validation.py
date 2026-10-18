@@ -1,8 +1,3 @@
-import parser
-import re
-
-
-json = parser.read_json()
 
 
 # validate all fields are present, works with strings but crashes with empty ints and such

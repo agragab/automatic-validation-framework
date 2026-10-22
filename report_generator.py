@@ -1,8 +1,12 @@
 
-def generate_report_string(total_tests: int, failed: int, failed_types: list[dict], temperature: list[dict], exposure: dict, focus: dict):
+def generate_report_string(pytest_result: str, total_tests: int, failed: int, failed_types: list[dict], temperature: list[dict], exposure: dict, focus: dict):
 
     report = []
 
+    # pytest result:
+    report.append(f"pytest Result: \n{50*'-'}")
+    report.append(pytest_result)
+    
     report.append(f"Report on JSON: \n{50*'-'}")
     report.append(f"Total tests: {total_tests}")
     report.append(f"Passed tests: {total_tests-failed}")

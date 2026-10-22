@@ -135,14 +135,16 @@ def validate_temperature(Readings: list[dict]) -> dict:
                     "reading": Reading["temperature"],
                     "note": "WARNING: Temperature is too high."
                 }
+                validation_result.append(result_dict)
             else:
                 result_dict = {
-                    "sequence": i,
+                    "sequence": i+1,
                     "test": "Temperature",
                     "result": True,
                     "reading": Reading["temperature"],
                     "note": "Temperature is within range."
                 }
+                validation_result.append(result_dict)
 
 
             # if (int_temp <= 19):

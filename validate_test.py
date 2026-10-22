@@ -1,7 +1,19 @@
 import validate
 import pytest
 
-@pytest.mark.xfail
+
+        # if (Reading["temperature"]=="") or (Reading["temperature"] is None):
+        #     result_dict = {
+        #         "sequence": i+1,
+        #         "test": "Temperature",
+        #         "result": False,
+        #         "reading": "Null",
+        #         "note": "Empty Value"
+        #     }
+        #     validation_result.append(result_dict)
+
+
+
 def test_validate_temperature_within_bounds():
 
     Readings = [{
@@ -10,23 +22,17 @@ def test_validate_temperature_within_bounds():
         "temperature": "20",
         "exposure": "2",
         "focus_error": "0"
-    },
-    {
-        "m_id": "102",
-        "timestamp": "2026-10-09T08:00:00",
-        "temperature": "21",
-        "exposure": "2",
-        "focus_error": "0"
     }
     ]
 
-    assert validate.validate_temperature(Readings) == {
+    assert validate.validate_temperature(Readings) == [{
+        "sequence": 1,
         "test": "Temperature",
-        "result": False,
-        "out_of_bounds": [],
-        "in_bounds": ["101","102"],
-        "reading": []
-    }
+        "result": True,
+        "reading": "20",
+        "note": "Temperature is within range."
+    }]
+    
 
 @pytest.mark.xfail
 def test_validate_temperature_outside_bounds():

@@ -65,7 +65,7 @@ Send readings (save this as `payload.json`):
 {
   "list": [
     {"m_id": "101", "timestamp": "2026-10-09T08:00:00", "temperature": "20", "exposure": "2",   "focus_error": "0"},
-    {"m_id": "102", "timestamp": "2026-10-09T08:05:00", "temperature": "19", "exposure": "A8a", "focus_error": "53"}
+    {"m_id": "102", "timestamp": "2026-10-09T08:05:00", "temperature": "19", "exposure": "A0a", "focus_error": "53"}
   ]
 }
 ```
@@ -76,7 +76,7 @@ curl -X POST http://localhost:8000/jsonat \
      -d @payload.json
 ```
 
-Every value is sent as a string, including numbers (`"20"`, not `20`). That is how the input model is defined: a JSON number is rejected with `422`, while a malformed string like `A8a` gets through and is reported as a finding in the validation report.
+Every value is sent as a string, including numbers (`"20"`, not `20`). That is how the input model is defined: a JSON number is rejected with `422`, while a malformed string like `A0a` gets through and is reported as a finding in the validation report.
 
 ### Example response
 

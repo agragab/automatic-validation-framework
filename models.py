@@ -1,12 +1,13 @@
 from pydantic import BaseModel, TypeAdapter
-from typing_extensions import TypedDict, List
+from typing import TypedDict
 
-class jsonnaya(TypedDict):
+class ReadingUnit(TypedDict):
     m_id: str 
     timestamp: str
     temperature: str
     exposure: str
     focus_error: str
 
-class jsonnat(BaseModel):
-    listaya: list[jsonnaya]
+class Readings(BaseModel):
+    Readings: list[ReadingUnit]
+            

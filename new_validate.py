@@ -68,6 +68,7 @@ def set_focus_error(sequence: int = 0, focus_error: str = "5"):
 
 @keyword("type validation is ran")
 def run_type_validation(payload: list[dict] = json):
+    results = []
     for i, Reading in enumerate(payload):
         for key, value in Reading.items():
             if (((value is None) or (value == "")) or (key == "timestamp")):
@@ -82,14 +83,15 @@ def run_type_validation(payload: list[dict] = json):
                         "value": value,
                         "exception": type(e).__name__
                     }
-                    type_state_list.append(type_state)
-    state_lists["type"] = type_state_list
-    return(type_state_list)
+                    results.append(type_state)
+    type_state_list[:] = results
+    return(results)
 
 
 @keyword("temperature validation is ran")
 def run_temperature_validation(payload: list[dict] = json): # 20 < permitted range < 50
     # looping over 
+    results = []
     for i, Reading in enumerate(payload):
         # handling empty temperature field
         if(Reading.get("temperature") == "" or (Reading.get("temperature") is None)):
@@ -100,7 +102,7 @@ def run_temperature_validation(payload: list[dict] = json): # 20 < permitted ran
                 "reading": "Null",
                 "note": "Empty Value"
             }
-            temperature_state_list.append(temperature_state)
+            results.append(temperature_state)
             continue
         try: 
             int_temperature = int(Reading["temperature"])
@@ -132,13 +134,13 @@ def run_temperature_validation(payload: list[dict] = json): # 20 < permitted ran
                 "reading": int_temperature,
                 "note": "Temperature is within range"
             } 
-            temperature_state_list.append(temperature_state)
-    state_lists["temperature"] = temperature_state_list
-    return(temperature_state_list)
+            results.append(temperature_state)
+    temperature_state_list[:] = results
+    return(results)
 
 @keyword("exposure validation is ran")
 def run_exposure_validation(payload: list[dict] = json): # 10 < permitted range < 20
-    
+    results = []
     # looping over 
     for i, Reading in enumerate(payload):
 
@@ -151,7 +153,7 @@ def run_exposure_validation(payload: list[dict] = json): # 10 < permitted range 
                 "reading": "Null",
                 "note": "Empty Value"
             }
-            exposure_state_list.append(exposure_state)
+            results.append(exposure_state)
             continue
 
         # handling non numerical temperature
@@ -185,13 +187,13 @@ def run_exposure_validation(payload: list[dict] = json): # 10 < permitted range 
                 "reading": int_exposure,
                 "note": "Subject is correctly exposed"
             } 
-            exposure_state_list.append(exposure_state)
-    state_lists["exposure"] = exposure_state_list
-    return(exposure_state_list)
+            results.append(exposure_state)
+    exposure_state_list[:] = results
+    return(results)
 
 @keyword("focus error validation is ran")
 def run_focus_error_validation(payload: list[dict] = json): # permitted range < 10
-
+    results = []
     # looping over 
     for i, Reading in enumerate(payload):
 
@@ -204,7 +206,7 @@ def run_focus_error_validation(payload: list[dict] = json): # permitted range < 
                 "reading": "Null",
                 "note": "Empty Value"
             }
-            focus_error_state_list.append(focus_error_state)
+            results.append(focus_error_state)
             continue
 
         # handling non numerical temperature
@@ -229,9 +231,9 @@ def run_focus_error_validation(payload: list[dict] = json): # permitted range < 
                 "reading": int_focus_error,
                 "note": "Focus error is acceptable"
             } 
-            focus_error_state_list.append(focus_error_state)
-    state_lists["focus_error"] = focus_error_state_list
-    return(focus_error_state_list)
+            results.append(focus_error_state)
+    focus_error_state_list[:] = results
+    return(results)
 
 
 

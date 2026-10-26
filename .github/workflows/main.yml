@@ -13,11 +13,11 @@ jobs:
         - name: setup python
           uses: actions/setup-python@v5
           with:
-            python-version: '3.x'
+            python-version: '3.12'
         - name: install dependencies
           run: |
             python -m pip install --upgrade pip
-            pip install -r requirements
+            pip install -r requirements.txt
         - name: test with robot
           run: |
             robot test.robot

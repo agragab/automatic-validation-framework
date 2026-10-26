@@ -5,17 +5,13 @@ import main
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/health")
 def homepage():
-    return ("hello world")
-
-@app.post("/json")
-def receive_json(payload: models.jsonnaya):
-    return (payload.exposure)
+    return ("healthy!")
 
 
 #receives json with readings, returns validated plaintext report of readings.
-@app.post("/jsonat", response_class=PlainTextResponse)
-def receive_json(payload: models.jsonnat):
+@app.post("/json", response_class=PlainTextResponse)
+def receive_json(payload: list[models.ReadingUnit]):
     return (main.main(payload))
     

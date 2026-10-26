@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-10-26T10:31:44.362285" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="C:\Users\USER\Desktop\Automated Test and Validation Framework\test.robot">
+<test id="s1-t1" name="Temperature Field Empty" line="6">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.426070" elapsed="0.000159"/>
+</kw>
+<kw name="When temperature of reading 0 is ${EMPTY}" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.426700" elapsed="0.000236"/>
+</kw>
+<kw name="And temperature validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.427189" elapsed="0.000109"/>
+</kw>
+<kw name="Then sequence of temperature result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.427670" elapsed="0.000130"/>
+</kw>
+<kw name="And result of temperature result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.428182" elapsed="0.000117"/>
+</kw>
+<kw name="And reading of temperature result 0 is Null" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.428606" elapsed="0.000123"/>
+</kw>
+<kw name="And note of temperature result 0 is Empty Value" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.429042" elapsed="0.000161"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.424993" elapsed="0.004557"/>
+</test>
+<test id="s1-t2" name="Temperature Inside Range" line="15">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.430717" elapsed="0.000193"/>
+</kw>
+<kw name="When temperature of reading 0 is 25" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.431457" elapsed="0.000305"/>
+</kw>
+<kw name="And temperature validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.432137" elapsed="0.000120"/>
+</kw>
+<kw name="Then sequence of temperature result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.432604" elapsed="0.000115"/>
+</kw>
+<kw name="And test of temperature result 0 is Temperature" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.433052" elapsed="0.000117"/>
+</kw>
+<kw name="And result of temperature result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.433488" elapsed="0.000112"/>
+</kw>
+<kw name="And reading of temperature result 0 is 25" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.433828" elapsed="0.000114"/>
+</kw>
+<kw name="And note of temperature result 0 is Temperature is within range" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.434451" elapsed="0.000224"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.430108" elapsed="0.004869"/>
+</test>
+<test id="s1-t3" name="Temperature Outside Lower Range" line="25">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.436377" elapsed="0.000195"/>
+</kw>
+<kw name="When temperature of reading 0 is 15" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.437042" elapsed="0.000213"/>
+</kw>
+<kw name="And temperature validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.437515" elapsed="0.000136"/>
+</kw>
+<kw name="Then sequence of temperature result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.437981" elapsed="0.000141"/>
+</kw>
+<kw name="And test of temperature result 0 is Temperature" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.438469" elapsed="0.000136"/>
+</kw>
+<kw name="And result of temperature result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.439101" elapsed="0.000353"/>
+</kw>
+<kw name="And reading of temperature result 0 is 15" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.439941" elapsed="0.000176"/>
+</kw>
+<kw name="And note of temperature result 0 is WARNING: Temperature is too low" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.440434" elapsed="0.000183"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.435694" elapsed="0.005225"/>
+</test>
+<test id="s1-t4" name="Temperature Outside Higher Range" line="35">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.442382" elapsed="0.000211"/>
+</kw>
+<kw name="When temperature of reading 0 is 65" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.443061" elapsed="0.000170"/>
+</kw>
+<kw name="And temperature validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.443563" elapsed="0.000194"/>
+</kw>
+<kw name="Then sequence of temperature result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.444574" elapsed="0.000473"/>
+</kw>
+<kw name="And test of temperature result 0 is Temperature" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.446162" elapsed="0.000320"/>
+</kw>
+<kw name="And result of temperature result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.447066" elapsed="0.000291"/>
+</kw>
+<kw name="And reading of temperature result 0 is 65" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.447713" elapsed="0.000161"/>
+</kw>
+<kw name="And note of temperature result 0 is WARNING: Temperature is too high" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.448345" elapsed="0.000254"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.441670" elapsed="0.007167"/>
+</test>
+<test id="s1-t5" name="Temperature Higher Edge Case" line="45">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.449994" elapsed="0.000130"/>
+</kw>
+<kw name="When temperature of reading 0 is 50" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.450520" elapsed="0.000197"/>
+</kw>
+<kw name="And temperature validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.450999" elapsed="0.000191"/>
+</kw>
+<kw name="Then sequence of temperature result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.451503" elapsed="0.000147"/>
+</kw>
+<kw name="And test of temperature result 0 is Temperature" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.451943" elapsed="0.000132"/>
+</kw>
+<kw name="And result of temperature result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.452346" elapsed="0.000140"/>
+</kw>
+<kw name="And reading of temperature result 0 is 50" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.452737" elapsed="0.000118"/>
+</kw>
+<kw name="And note of temperature result 0 is Temperature is within range" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.453093" elapsed="0.000111"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.449416" elapsed="0.003973"/>
+</test>
+<test id="s1-t6" name="Temperature Lower Edge Case" line="55">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.454312" elapsed="0.000145"/>
+</kw>
+<kw name="When temperature of reading 0 is 20" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.455004" elapsed="0.000303"/>
+</kw>
+<kw name="And temperature validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.456018" elapsed="0.000778"/>
+</kw>
+<kw name="Then sequence of temperature result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.458011" elapsed="0.000356"/>
+</kw>
+<kw name="And test of temperature result 0 is Temperature" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.458874" elapsed="0.000217"/>
+</kw>
+<kw name="And result of temperature result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.459567" elapsed="0.000184"/>
+</kw>
+<kw name="And reading of temperature result 0 is 20" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.460074" elapsed="0.000145"/>
+</kw>
+<kw name="And note of temperature result 0 is Temperature is within range" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.460543" elapsed="0.000134"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.453899" elapsed="0.007039"/>
+</test>
+<test id="s1-t7" name="Exposure Field Empty" line="65">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.462199" elapsed="0.000150"/>
+</kw>
+<kw name="When exposure of reading 0 is ${EMPTY}" owner="new_validate" source_name="exposure of reading ${sequence} is ${exposure}">
+<status status="PASS" start="2026-10-26T10:31:44.462989" elapsed="0.000242"/>
+</kw>
+<kw name="And exposure validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.463548" elapsed="0.000149"/>
+</kw>
+<kw name="Then sequence of exposure result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.464104" elapsed="0.000163"/>
+</kw>
+<kw name="And result of exposure result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.464576" elapsed="0.000142"/>
+</kw>
+<kw name="And reading of exposure result 0 is Null" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.464969" elapsed="0.000138"/>
+</kw>
+<kw name="And note of exposure result 0 is Empty Value" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.465469" elapsed="0.000151"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.461693" elapsed="0.004119"/>
+</test>
+<test id="s1-t8" name="Exposure Inside Range" line="74">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.466952" elapsed="0.000168"/>
+</kw>
+<kw name="When exposure of reading 0 is 15" owner="new_validate" source_name="exposure of reading ${sequence} is ${exposure}">
+<status status="PASS" start="2026-10-26T10:31:44.467775" elapsed="0.000224"/>
+</kw>
+<kw name="And exposure validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.468691" elapsed="0.000213"/>
+</kw>
+<kw name="Then sequence of exposure result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.469381" elapsed="0.000202"/>
+</kw>
+<kw name="And test of exposure result 0 is Exposure" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.469983" elapsed="0.000163"/>
+</kw>
+<kw name="And result of exposure result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.470463" elapsed="0.000167"/>
+</kw>
+<kw name="And reading of exposure result 0 is 15" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.470955" elapsed="0.000172"/>
+</kw>
+<kw name="And note of exposure result 0 is Subject is correctly exposed" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.471529" elapsed="0.000172"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.466356" elapsed="0.005598"/>
+</test>
+<test id="s1-t9" name="Exposure Outside Range" line="84">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.473010" elapsed="0.000119"/>
+</kw>
+<kw name="When exposure of reading 0 is 25" owner="new_validate" source_name="exposure of reading ${sequence} is ${exposure}">
+<status status="PASS" start="2026-10-26T10:31:44.473416" elapsed="0.000130"/>
+</kw>
+<kw name="And exposure validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.473789" elapsed="0.000112"/>
+</kw>
+<kw name="Then sequence of exposure result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.474177" elapsed="0.000133"/>
+</kw>
+<kw name="And test of exposure result 0 is Exposure" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.474615" elapsed="0.000161"/>
+</kw>
+<kw name="And result of exposure result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.475034" elapsed="0.000126"/>
+</kw>
+<kw name="And reading of exposure result 0 is 25" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.475427" elapsed="0.000143"/>
+</kw>
+<kw name="And note of exposure result 0 is WARNING: Subject is overexposed" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.475872" elapsed="0.000133"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.472615" elapsed="0.003581"/>
+</test>
+<test id="s1-t10" name="Exposure Lower Edge Case" line="94">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.476980" elapsed="0.000102"/>
+</kw>
+<kw name="When exposure of reading 0 is 10" owner="new_validate" source_name="exposure of reading ${sequence} is ${exposure}">
+<status status="PASS" start="2026-10-26T10:31:44.477442" elapsed="0.000251"/>
+</kw>
+<kw name="And exposure validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.478055" elapsed="0.000320"/>
+</kw>
+<kw name="Then sequence of exposure result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.479285" elapsed="0.000431"/>
+</kw>
+<kw name="And test of exposure result 0 is Exposure" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.480587" elapsed="0.000416"/>
+</kw>
+<kw name="And result of exposure result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.481821" elapsed="0.000346"/>
+</kw>
+<kw name="And reading of exposure result 0 is 10" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.482607" elapsed="0.000166"/>
+</kw>
+<kw name="And note of exposure result 0 is Subject is correctly exposed" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.483286" elapsed="0.000217"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.476642" elapsed="0.007149"/>
+</test>
+<test id="s1-t11" name="Exposure Higher Edge Case" line="104">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.485075" elapsed="0.000239"/>
+</kw>
+<kw name="When exposure of reading 0 is 20" owner="new_validate" source_name="exposure of reading ${sequence} is ${exposure}">
+<status status="PASS" start="2026-10-26T10:31:44.485802" elapsed="0.000203"/>
+</kw>
+<kw name="And exposure validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.486311" elapsed="0.000204"/>
+</kw>
+<kw name="Then sequence of exposure result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.486880" elapsed="0.000179"/>
+</kw>
+<kw name="And test of exposure result 0 is Exposure" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.487494" elapsed="0.000220"/>
+</kw>
+<kw name="And result of exposure result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.488044" elapsed="0.000151"/>
+</kw>
+<kw name="And reading of exposure result 0 is 20" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.488609" elapsed="0.000176"/>
+</kw>
+<kw name="And note of exposure result 0 is Subject is correctly exposed" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.489163" elapsed="0.000130"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.484465" elapsed="0.005125"/>
+</test>
+<test id="s1-t12" name="Focus Error Field Empty" line="114">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.490586" elapsed="0.000110"/>
+</kw>
+<kw name="When focus error of reading 0 is ${EMPTY}" owner="new_validate" source_name="focus error of reading ${sequence} is ${focus_error}">
+<status status="PASS" start="2026-10-26T10:31:44.491073" elapsed="0.000269"/>
+</kw>
+<kw name="And focus error validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.491616" elapsed="0.000165"/>
+</kw>
+<kw name="Then sequence of focus_error result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.492096" elapsed="0.000137"/>
+</kw>
+<kw name="And result of focus_error result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.492595" elapsed="0.000235"/>
+</kw>
+<kw name="And reading of focus_error result 0 is Null" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.493911" elapsed="0.000335"/>
+</kw>
+<kw name="And note of focus_error result 0 is Empty Value" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.494933" elapsed="0.000372"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.490162" elapsed="0.005579"/>
+</test>
+<test id="s1-t13" name="Focus Error Inside Range" line="123">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.496865" elapsed="0.000138"/>
+</kw>
+<kw name="When focus error of reading 0 is 5" owner="new_validate" source_name="focus error of reading ${sequence} is ${focus_error}">
+<status status="PASS" start="2026-10-26T10:31:44.497291" elapsed="0.000130"/>
+</kw>
+<kw name="And focus error validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.497673" elapsed="0.000131"/>
+</kw>
+<kw name="Then sequence of focus_error result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.498099" elapsed="0.000142"/>
+</kw>
+<kw name="And test of focus_error result 0 is Focus Error" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.498563" elapsed="0.000147"/>
+</kw>
+<kw name="And result of focus_error result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.499005" elapsed="0.000146"/>
+</kw>
+<kw name="And reading of focus_error result 0 is 5" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.499644" elapsed="0.000206"/>
+</kw>
+<kw name="And note of focus_error result 0 is Focus error is acceptable" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.500219" elapsed="0.000156"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.496373" elapsed="0.004344"/>
+</test>
+<test id="s1-t14" name="Focus Error Outside Range" line="133">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.501929" elapsed="0.000113"/>
+</kw>
+<kw name="When focus error of reading 0 is 15" owner="new_validate" source_name="focus error of reading ${sequence} is ${focus_error}">
+<status status="PASS" start="2026-10-26T10:31:44.502386" elapsed="0.000119"/>
+</kw>
+<kw name="And focus error validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.502698" elapsed="0.000161"/>
+</kw>
+<kw name="Then sequence of focus_error result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.503320" elapsed="0.000169"/>
+</kw>
+<kw name="And test of focus_error result 0 is Focus Error" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.503887" elapsed="0.000214"/>
+</kw>
+<kw name="And result of focus_error result 0 is False" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.504522" elapsed="0.000176"/>
+</kw>
+<kw name="And reading of focus_error result 0 is 15" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.505011" elapsed="0.000171"/>
+</kw>
+<kw name="And note of focus_error result 0 is WARNING: Focus Error is outside permitted range" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.505466" elapsed="0.000150"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.501470" elapsed="0.004448"/>
+</test>
+<test id="s1-t15" name="Focus Error Edge Case" line="143">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.506920" elapsed="0.000108"/>
+</kw>
+<kw name="When focus error of reading 0 is 5" owner="new_validate" source_name="focus error of reading ${sequence} is ${focus_error}">
+<status status="PASS" start="2026-10-26T10:31:44.507370" elapsed="0.000126"/>
+</kw>
+<kw name="And focus error validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.507787" elapsed="0.000103"/>
+</kw>
+<kw name="Then sequence of focus_error result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.508280" elapsed="0.000193"/>
+</kw>
+<kw name="And test of focus_error result 0 is Focus Error" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.508893" elapsed="0.000457"/>
+</kw>
+<kw name="And result of focus_error result 0 is True" owner="new_validate" source_name="result of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.510179" elapsed="0.000258"/>
+</kw>
+<kw name="And reading of focus_error result 0 is 5" owner="new_validate" source_name="reading of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.511036" elapsed="0.000204"/>
+</kw>
+<kw name="And note of focus_error result 0 is Focus error is acceptable" owner="new_validate" source_name="note of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.511705" elapsed="0.000189"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.506551" elapsed="0.005638"/>
+</test>
+<test id="s1-t16" name="Invalid Type" line="153">
+<kw name="Given defaults are set" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.513005" elapsed="0.000112"/>
+</kw>
+<kw name="When temperature of reading 0 is abc" owner="new_validate" source_name="temperature of reading ${sequence} is ${temperature}">
+<status status="PASS" start="2026-10-26T10:31:44.513360" elapsed="0.000137"/>
+</kw>
+<kw name="And type validation is ran" owner="new_validate">
+<status status="PASS" start="2026-10-26T10:31:44.513649" elapsed="0.000105"/>
+</kw>
+<kw name="Then sequence of type result 0 is 0" owner="new_validate" source_name="sequence of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.513983" elapsed="0.000121"/>
+</kw>
+<kw name="And test of type result 0 is temperature" owner="new_validate" source_name="test of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.514476" elapsed="0.000138"/>
+</kw>
+<kw name="And exception of type result 0 is ValueError" owner="new_validate" source_name="exception of ${test} result ${sequence} is ${expected}">
+<status status="PASS" start="2026-10-26T10:31:44.514854" elapsed="0.000123"/>
+</kw>
+<status status="PASS" start="2026-10-26T10:31:44.512665" elapsed="0.002495"/>
+</test>
+<status status="PASS" start="2026-10-26T10:31:44.364261" elapsed="0.151751"/>
+</suite>
+<statistics>
+<total>
+<stat pass="16" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test" id="s1" pass="16" fail="0" skip="0">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

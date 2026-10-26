@@ -17,8 +17,8 @@ jobs:
         - name: install dependencies
           run: |
             python -m pip install --upgrade pip
-            pip install pytest
-        - name: test with pytest
+            pip install -r requirements
+        - name: test with robot
           run: |
-            pytest validate_test.py
+            robot test.robot
         

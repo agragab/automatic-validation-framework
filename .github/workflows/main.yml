@@ -20,5 +20,5 @@ jobs:
             pip install -r requirements.txt
         - name: test with robot
           run: |
-            robot test.robot
+            robot --pythonpath . tests/
         

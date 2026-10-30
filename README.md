@@ -1,55 +1,91 @@
-# Sensor Data Validation Framework
+# 🔬 Sensor Data Validation Framework
 
 [![Sensor Validation Tests](https://github.com/agragab/automatic-validation-framework/actions/workflows/main.yml/badge.svg)](https://github.com/agragab/automatic-validation-framework/actions/workflows/main.yml)
 ![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Robot Framework](https://img.shields.io/badge/Robot%20Framework-000000?logo=robotframework&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)
-![pytest](https://img.shields.io/badge/tested%20with-pytest-0A9EDC?logo=pytest&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
 
-Send a batch of sensor readings as JSON to a Dockerized HTTP service. One request comes back with **two things in a single plain-text response**: the **pytest results** of the project's own test suite, and a **validation report** for the readings you sent.
+Send a batch of sensor readings as JSON to a small HTTP service and get back a **plain-text validation report**: which readings have the wrong type, which are out of range, and which are empty.
 
-## How it works
+The service runs in Docker, is covered by a behaviour-style **Robot Framework** test suite, and is tested automatically by **GitHub Actions** on every push and pull request.
+
+## 📖 About
+
+This project is a hands-on exercise in building and testing a small data-validation service end to end:
+
+- **A validation service** with a typed HTTP API (FastAPI + Pydantic) and rule-based checks on `temperature`, `exposure` and `focus_error`.
+- **Readable, behaviour-driven tests** written in Robot Framework's Given / When / Then style, including edge cases at every range boundary.
+- **Automation around it**: a container image that refuses to build if the tests fail, and a CI workflow that runs the same tests remotely.
+
+Built by [@agragab](https://github.com/agragab).
+
+## 🧭 How it works
 
 ```mermaid
 flowchart TD
-    client(["<b>Client</b><br/>curl · Postman"])
+    client(["<b>Client</b><br/>curl · Postman · browser"])
 
     subgraph docker["Docker container · python:3.12-slim · host :8000 → container :80"]
         direction TB
-        api["<b>FastAPI + Pydantic</b><br/>api.py · models.py<br/><i>POST /jsonat · wrong shape → 422</i>"]
+        api["<b>FastAPI + Pydantic</b><br/>api.py · models.py<br/><i>POST /json · GET /health</i>"]
         main["<b>Orchestrator</b><br/>main.py"]
-        rules["<b>Validation report</b><br/>validate.py → report_generator.py<br/>types · temperature · exposure · focus"]
-        pytest["<b>Test results</b><br/>subprocess → pytest<br/>validate_test.py"]
-        merge["<b>One plain-text response</b><br/>test results + validation report"]
+        rules["<b>Validation rules</b><br/>validators.py<br/>type · temperature · exposure · focus error"]
+        counts["<b>Counters</b><br/>utils.py<br/>total / failed checks"]
+        report["<b>Report builder</b><br/>report_generator.py"]
 
         api --> main
-        main --> rules --> merge
-        main --> pytest --> merge
+        main --> rules
+        main --> counts
+        rules --> report
+        counts --> report
     end
 
     out(["<b>Client receives</b><br/>text/plain · HTTP 200"])
 
-    client == "JSON readings" ==> api
-    merge == "response body" ==> out
+    client == "JSON array of readings" ==> api
+    report == "validation report" ==> out
 
     classDef edge fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0;
     classDef core fill:#111827,stroke:#6366f1,stroke-width:2px,color:#e5e7eb;
     classDef res fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#ecfdf5;
     class client,out edge
-    class api,main,rules,pytest core
-    class merge res
+    class api,main,rules,counts core
+    class report res
     style docker fill:#0b1220,stroke:#334155,stroke-width:2px,stroke-dasharray:6 4,color:#94a3b8
     linkStyle default stroke:#94a3b8,stroke-width:2px
 ```
 
-1. The client posts JSON to `POST /jsonat`. Docker maps host port **8000** to the container's port **80**.
-2. FastAPI validates the request shape with Pydantic. A body that does not match the model is rejected with `422` before any of the project's code runs.
-3. `main.py` runs the value checks and builds the validation report, and runs pytest in a subprocess.
-4. Both results are joined into one plain-text response.
+### Request lifecycle
 
-## Quick start
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Client
+    participant A as api.py (FastAPI)
+    participant M as main.py
+    participant V as validators.py
+    participant R as report_generator.py
 
-Requires Docker.
+    C->>A: POST /json (array of readings)
+    A->>A: Pydantic checks the shape (every value a string)
+    alt wrong shape
+        A-->>C: 422 Unprocessable Entity
+    else valid shape
+        A->>M: main(payload)
+        M->>V: type, temperature, exposure, focus error checks
+        V-->>M: findings per check
+        M->>R: counts + findings
+        R-->>M: report text
+        M-->>A: report text
+        A-->>C: 200 text/plain
+    end
+```
+
+## 🚀 Quick start
+
+### With Docker
 
 ```bash
 git clone https://github.com/agragab/automatic-validation-framework
@@ -57,141 +93,148 @@ cd automatic-validation-framework
 docker compose up --build
 ```
 
-The service is now on `http://localhost:8000`. FastAPI's interactive docs are at `http://localhost:8000/docs`.
+The image build runs the test suite first, so a failing test stops the build. The service is then available on `http://localhost:8000`, and FastAPI's interactive docs are at `http://localhost:8000/docs`.
 
-Send readings (save this as `payload.json`):
+### Without Docker
 
-```json
-{
-  "list": [
-    {"m_id": "101", "timestamp": "2026-10-09T08:00:00", "temperature": "20", "exposure": "2",   "focus_error": "0"},
-    {"m_id": "102", "timestamp": "2026-10-09T08:05:00", "temperature": "19", "exposure": "A0a", "focus_error": "53"}
-  ]
-}
-```
+Requires Python 3.12 or newer.
 
 ```bash
-curl -X POST http://localhost:8000/jsonat \
-     -H "Content-Type: application/json" \
-     -d @payload.json
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn api:app --reload --port 8000
 ```
 
-Every value is sent as a string, including numbers (`"20"`, not `20`). That is how the input model is defined: a JSON number is rejected with `422`, while a malformed string like `A0a` gets through and is reported as a finding in the validation report.
+### Send some readings
+
+```bash
+curl -X POST http://localhost:8000/json \
+     -H "Content-Type: application/json" \
+     -d @examples/payload.json
+```
+
+The request body is a **JSON array** of readings. `examples/payload.json` contains:
+
+```json
+[
+  {"m_id": "101", "timestamp": "2026-10-09T08:00:00", "temperature": "25",  "exposure": "15", "focus_error": "3"},
+  {"m_id": "102", "timestamp": "2026-10-09T08:05:00", "temperature": "19",  "exposure": "22", "focus_error": "12"},
+  {"m_id": "103", "timestamp": "2026-10-09T08:10:00", "temperature": "A0a", "exposure": "",   "focus_error": "5"}
+]
+```
+
+> **Every value must be a string**, including numbers (`"25"`, not `25`). A JSON number is rejected with `422` before any validation runs. A malformed string such as `"A0a"` is accepted and reported as a finding.
 
 ### Example response
-
-The response contains both parts. The validation-report part for the payload above is (blank lines condensed):
 
 ```text
 Report on JSON: 
 --------------------------------------------------
-Total tests: 16
-Passed tests: 13
-Failed tests: 3
+Total tests: 30
+Passed tests: 25
+Failed tests: 5
 --------------------------------------------------
     Incorrect Type:
     Sequence: 2
-    Test: exposure
+    Test: temperature
+    Value: A0a
     Exception Type: ValueError
 
-    Focus Error:
-    Test: 102    Reading: 53
+    Temperature Error:
+    Sequence: 1  Reading: 19    WARNING: Temperature is too low
 
     Exposure Error:
+    Sequence: 1  Reading: 22    WARNING: Subject is overexposed
+    Sequence: 2  Reading: Null    Empty Value
 
-    Temperature Error:
-    Sequence: 2  Reading: 19    WARNING: Temperature is too low.
+    Focus Error:
+    Sequence: 1  Reading: 12    WARNING: Focus Error is outside permitted range
 ```
 
-The pytest part is returned in the same response body:
+(Blank lines condensed. `Sequence` is the **zero-based** position of the reading in your array.)
 
-```text
-pytest Result: 
---------------------------------------------------
-============================= test session starts ==============================
-platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0 -- /usr/local/bin/python3.12
-cachedir: .pytest_cache
-rootdir: /app
-plugins: anyio-4.15.1
-collecting ... collected 7 items
-
-validate_test.py::test_validate_temperature_within_bounds PASSED         [ 14%]
-validate_test.py::test_validate_temperature_outside_bounds XFAIL         [ 28%]
-validate_test.py::test_validate_exposure_within_bounds PASSED            [ 42%]
-validate_test.py::test_validate_exposure_outside_bounds PASSED           [ 57%]
-validate_test.py::test_validate_focus_within_bounds PASSED               [ 71%]
-validate_test.py::test_validate_focus_outside_bounds PASSED              [ 85%]
-validate_test.py::test_temp_wrong_type XFAIL                             [100%]
-
-========================= 5 passed, 2 xfailed in 0.05s =========================
-```
-
-## Validation rules
+## 📏 Validation rules
 
 | Field | Valid range | Reported when |
 | --- | --- | --- |
-| `temperature` | 20 – 60 | at or below 19 (too low), at or above 61 (too high), or empty |
-| `exposure` | 2 – 5 | below 2 or above 5 |
-| `focus_error` | 0 – 52 | above 52 |
-| any numeric field | integer string | the value cannot be converted to an integer (reported as `ValueError`) |
+| `temperature` | 20 – 50 | below 20 (too low), above 50 (too high), or empty |
+| `exposure` | 10 – 20 | below 10 (underexposed), above 20 (overexposed), or empty |
+| `focus_error` | 10 or below (no lower bound) | above 10, or empty |
+| `m_id`, `temperature`, `exposure`, `focus_error` | integer string | the value cannot be converted to an integer (reported as `ValueError`) |
 
-Empty `exposure` and `focus_error` values are skipped. Timestamps are not range-checked.
+Range limits are inclusive. Empty values are reported as `Null` / `Empty Value`. A value that is not an integer is reported once under *Incorrect Type* and skipped by the range check. `timestamp` is not validated.
 
-## Project layout
+**Counting:** every reading counts as 10 checks, so `Total tests = 10 × number of readings`. `Failed tests` is the number of type errors plus range/empty findings.
 
-| File | Role |
-| --- | --- |
-| `api.py` | FastAPI app and the `POST /jsonat` route |
-| `models.py` | Pydantic request model |
-| `main.py` | Orchestration: runs the checks, builds the report, runs pytest |
-| `validate.py` | Type, temperature, exposure and focus checks |
-| `report_generator.py` | Builds the plain-text validation report |
-| `validate_test.py` | pytest suite |
-| `Dockerfile`, `compose.yaml` | Container image and port mapping |
-| `.github/workflows/main.yml` | CI: runs pytest on every push and pull request |
+## 🧪 Tests and CI
 
-## Tests and CI
+The suite has **16 Robot Framework test cases** written in Given / When / Then style, covering each field inside range, outside range, at the exact boundaries, empty, and with an invalid type.
 
 ```bash
 pip install -r requirements.txt
-pytest validate_test.py
+robot --pythonpath . tests/
 ```
 
-GitHub Actions runs the same suite on every push and pull request. A pull request can only be merged into `main` once the test job passes.
+Robot writes `log.html`, `report.html` and `output.xml` to the current directory (all git-ignored). Open `report.html` for a readable summary.
+
+GitHub Actions runs the same command on every push and pull request.
 
 ```mermaid
-flowchart TD
-    dev(["<b>Developer</b><br/>git push · pull request"])
+flowchart LR
+    dev(["<b>Developer</b><br/>push · pull request"])
 
     subgraph gh["GitHub Actions · .github/workflows/main.yml"]
-        direction TB
-        job["<b>Test job</b><br/>ubuntu-latest · Python 3.x<br/>pytest validate_test.py"]
+        direction LR
+        co["Checkout"] --> py["Set up<br/>Python 3.12"] --> deps["pip install<br/>-r requirements.txt"] --> rf["robot --pythonpath .<br/>tests/"]
     end
 
-    gate{"<b>Required check</b><br/>passes?"}
-    ok["<b>Merge allowed</b><br/>pull request → main"]
-    blocked["<b>Merge blocked</b><br/>fix, push again"]
+    gate{"All tests<br/>pass?"}
+    ok["✅ Check passes"]
+    bad["❌ Check fails<br/>fix and push again"]
 
-    dev == "on push / PR" ==> job
-    job --> gate
+    dev ==> co
+    rf --> gate
     gate -- "yes" --> ok
-    gate -- "no" --> blocked
+    gate -- "no" --> bad
 
     classDef edge fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0;
     classDef core fill:#111827,stroke:#6366f1,stroke-width:2px,color:#e5e7eb;
     classDef good fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#ecfdf5;
-    classDef bad fill:#450a0a,stroke:#f87171,stroke-width:2px,color:#fef2f2;
+    classDef badc fill:#450a0a,stroke:#f87171,stroke-width:2px,color:#fef2f2;
     class dev edge
-    class job,gate core
+    class co,py,deps,rf,gate core
     class ok good
-    class blocked bad
+    class bad badc
     style gh fill:#0b1220,stroke:#334155,stroke-width:2px,stroke-dasharray:6 4,color:#94a3b8
     linkStyle default stroke:#94a3b8,stroke-width:2px
 ```
 
-## Known limitations and next steps
+## 🗂️ Project layout
 
-- Duplicate measurement IDs are not yet reported in the HTTP response.
-- The total test count in the report is calculated as a fixed number of checks per reading.
-- Tooling gates are planned: `ruff`, `mypy`, a coverage threshold in CI, and a `pyproject.toml`.
-- Some tests are marked `xfail` for features still being implemented.
+```text
+.
+├── api.py                  FastAPI app: GET /health, POST /json
+├── models.py               TypedDict model of one reading
+├── main.py                 Orchestration: run checks, count, build report
+├── validators.py           Validation rules + Robot Framework keywords
+├── utils.py                Total / failed check counters
+├── report_generator.py     Builds the plain-text report
+├── tests/
+│   └── validation.robot    Robot Framework test suite (16 cases)
+├── examples/
+│   ├── payload.json        Small request used in this README
+│   └── sample_readings.json  Larger, deliberately messy sample (22 readings)
+├── Dockerfile              Image; runs the tests during build
+├── compose.yaml            Port mapping 8000 → 80
+└── .github/workflows/
+    └── main.yml            CI: run the Robot suite on push and PR
+```
+
+## 🛣️ Known limitations and next steps
+
+- Range limits are hard-coded in `validators.py`; they are not configurable per request.
+- Duplicate `m_id` values are not detected.
+- `Total tests` is a fixed 10 checks per reading, not a count of checks actually executed.
+- Dependencies in `requirements.txt` are not version-pinned.
+- Planned tooling: `ruff`, `mypy`, a coverage threshold in CI, and a `pyproject.toml`.

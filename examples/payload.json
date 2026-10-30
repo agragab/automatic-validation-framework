@@ -1,0 +1,5 @@
+[
+  {"m_id": "101", "timestamp": "2026-10-09T08:00:00", "temperature": "25",  "exposure": "15", "focus_error": "3"},
+  {"m_id": "102", "timestamp": "2026-10-09T08:05:00", "temperature": "19",  "exposure": "22", "focus_error": "12"},
+  {"m_id": "103", "timestamp": "2026-10-09T08:10:00", "temperature": "A0a", "exposure": "",   "focus_error": "5"}
+]

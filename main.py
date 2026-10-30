@@ -1,7 +1,6 @@
 import report_generator
-import json as jason
 from utils import *
-from new_validate import *
+from validators import *
 
 # def main(payload: models.Readings = None):
 def main(payload):

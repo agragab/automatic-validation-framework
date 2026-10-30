@@ -1,5 +1,5 @@
 *** Settings ***
-Library    new_validate.py
+Library    ../validators.py
 
 *** Test Cases ***
 
